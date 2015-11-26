@@ -104,7 +104,7 @@ input[type=range]:focus::-ms-fill-upper {
     position: relative;
 }
 .point{
-    position: relative;
+    position: absolute;
     top: -5px;
     cursor: pointer;
     background-color: Green;

@@ -20,12 +20,11 @@
             ptBorderWidth: 10,
             ptBorderStyle: ' solid #000',
             ptBorderRadius: '50%',
-            width: '100%',
             height: 20
         }, options);
 
         this.css({
-            width: settings.width,
+            width: '100%',
             height: settings.height,
             left: (settings.ptWidth / 2 + settings.ptBorderWidth)
         });
@@ -37,14 +36,27 @@
 
         this.pointsBlocks = [];
 
-        for (i = 0; i < points.length; i++) {
+        $("<span></span>")
+            .addClass("point")
+            .css({
+                left: ((($(this).width()/ settings.step) * points[0].pos -  (settings.ptWidth / 2 + settings.ptBorderWidth)) / $(this).width() * 100).toString() + '%',
+                top : -(settings.ptHeight/2), 
+                width: settings.ptWidth,
+                height: settings.ptHeight,
+                'background-color': settings.ptBackgroundColor,
+                border: settings.ptBorderWidth.toString() + 'px' + settings.ptBorderStyle,
+                'border-radius': settings.ptBorderRadius
+            })
+            .appendTo(this);
+
+        for (i = 1; i < points.length; i++) {
             pos = points[i].pos;
-            console.log(parseInt(settings.width).toString());
-            console.log(((($(this).width()/ settings.step) * pos - ((settings.ptWidth + (settings.ptBorderWidth * 2)) * i) - (settings.ptWidth / 2 + settings.ptBorderWidth)) / $(this).width() * 100).toString() + '%');
+            
             $("<span></span>")
             .addClass("point")
             .css({
-                left: ((($(this).width()/ settings.step) * pos - ((settings.ptWidth + (settings.ptBorderWidth * 2)) * i) - (settings.ptWidth / 2 + settings.ptBorderWidth)) / $(this).width() * 100).toString() + '%',
+                left: ((($(this).width()/ settings.step) * pos -  (settings.ptWidth / 2 + settings.ptBorderWidth)) / $(this).width() * 100).toString() + '%',
+                top : -(settings.ptHeight/2), 
                 width: settings.ptWidth,
                 height: settings.ptHeight,
                 'background-color': settings.ptBackgroundColor,
@@ -57,7 +69,6 @@
         $(this.points).each(function (index, value) {
 
         });*/
-
 
 
         return this;
